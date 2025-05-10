@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ScheduleMe</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navigation Panel -->
+  <div class="nav-panel">
+    <h1 class="app-title">ScheduleMe</h1>
+    <nav class="nav-buttons">
+      <button id="home-btn">Home</button>
+      <button id="goals-btn">Goals</button>
+      <button id="reflect-btn">Reflect</button>
+      <button id="calendar-btn">Calendar</button>
+    </nav>
+  </div>
+
+  <div id="task-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span id="close-modal" class="close-button">&times;</span>
+      <h3 id="modal-date"></h3>
+      <ul id="modal-task-list"></ul>
+    </div>
+  </div>
+  
+  <!-- Home Page -->
+  <div id="home" class="page-content">
+    <h2>Today's Tasks</h2>
+    <ul id="daily-task-list"></ul> <!-- Updated ID to match JS -->
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+    <input type="text" id="daily-task-input" placeholder="Enter task" />
+    <button onclick="addDailyTask()">+ Add Task</button>
+    <button onclick="deleteAllDailyTasks()">Delete All Tasks</button>
+  </div>
+
+  <!-- Goals Page -->
+  <div id="goals" class="page-content" style="display:none;">
+    <h2>Choose Your Type Of Goal</h2>
+    <button onclick="showPage('weekly-goals')">Weekly Goals</button>
+    <button onclick="showPage('monthly-goals')">Monthly Goals</button>
+  </div>
+
+  <!-- Weekly Goals Page -->
+  <div id="weekly-goals" class="page-content" style="display:none;">
+    <h2>Weekly Goals</h2>
+    <input type="text" id="weekly-goal-input" placeholder="Enter your weekly goal" />
+    <button onclick="addWeeklyGoal()">Add Weekly Goal</button>
+    <ul id="weekly-goal-list"></ul>
+    
+    <!-- Back button and Delete All button -->
+    <div class="goal-actions">
+      <button onclick="showPage('goals')">← Back</button>
+      <button onclick="deleteAllGoals()">Delete All</button>
+    </div>
+  </div>
+
+  <!-- Monthly Goals Page -->
+  <div id="monthly-goals" class="page-content" style="display:none;">
+    <h2>Monthly Goals</h2>
+    <input type="text" id="monthly-goal-input" placeholder="Enter your monthly goal" />
+    <button onclick="addMonthlyGoal()">Add Monthly Goal</button>
+    <ul id="monthly-goal-list"></ul>
+    
+    <!-- Back button and Delete All button -->
+    <div class="goal-actions">
+      <button onclick="showPage('goals')">← Back</button>
+      <button onclick="deleteAllMonthlyGoals()">Delete All</button>
+    </div>
+  </div>
+
+  <!-- Reflect Page -->
+  <div id="reflect" class="page-content" style="display:none;">
+    <h2>Reflect</h2>
+    
+    <!-- Text Area for Writing Thoughts -->
+    <textarea id="reflect-input" placeholder="Write your thoughts here..."></textarea>
+    
+    <!-- File input for uploading images/videos -->
+    <input type="file" id="reflect-file-input" accept="image/*,video/*" />
+    
+    <!-- Button to add the entry -->
+    <button onclick="addReflectEntry()">Add Entry</button>
+    
+    <!-- Display the Reflect Entries -->
+    <ul id="reflect-list"></ul>
+    
+    <!-- Back Button -->
+    <div class="goal-actions">
+      <button onclick="showPage('home')">← Back</button>
+    </div>
+  </div>
+
+  <div class="calendar-nav">
+    <button id="prev-month">←</button>
+    <h2 id="calendar-header"></h2>
+    <button id="next-month">→</button>
+  </div>
+
+  <!-- Calendar Page -->
+  <div id="calendar-page" class="page" style="display: none;">
+    <div id="calendar-header-container" class="calendar-header-container">
+      <h2 id="calendar-header" style="text-align:center; margin-bottom: 1rem;"></h2>
+    </div>
+    <div id="calendar-grid"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
